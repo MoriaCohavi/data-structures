@@ -25,4 +25,8 @@ PolynomialList *Multiple(PolynomialList *lst, int scalar);
 
 int Order(PolynomialList *lst);
 
+PolynomialList *EmptyPol(PolynomialList *list);
+
+PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2);
+
 void PrintPolList(PolynomialList *lst);

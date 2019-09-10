@@ -191,3 +191,69 @@ void PrintPolList(PolynomialList *lst)
 		printf("\n");
 	}
 }
+PolynomialList *EmptyPol(PolynomialList *list)
+{
+	Polynomial *head = list->head;
+
+	if (head == NULL)
+	{
+		return list;
+	}
+	Polynomial *ptr = list->head->next;
+	Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
+	if (temp == NULL)
+	{
+		printf("Alloc failed\n");
+		return list;
+	}
+
+	while (ptr)
+	{
+		temp = ptr;
+		ptr = ptr->next;
+		free(temp);
+	}
+
+	head = InitPolynomialList();
+	head->pow = head->variable = 0;
+	return head;
+}
+
+PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2)
+{
+	PolynomialList *result = InitPolynomialList();
+	Polynomial *lst1Ptr = list1->head;
+	Polynomial *lst2Ptr = list2->head;
+	Polynomial *lst2head = list2->head;
+	int MultiBase, MultiPow;
+
+	if (list1 == NULL || list2 == NULL)
+	{
+		printf("One of the list is empty, cant mulitply\n");
+		return NULL;
+	}
+
+	while (lst1Ptr)
+	{
+		MultiBase = lst1Ptr->variable;
+		MultiPow = lst1Ptr->pow;
+
+		while (lst2Ptr)
+		{
+			if (MultiBase != 0 && lst2Ptr->variable != 0)
+			{
+				if (MultiPow == lst2Ptr->pow)
+					Insert(result, (MultiBase*(lst2Ptr->variable)), MultiPow);
+				else
+				{
+					Insert(result, (MultiBase*(lst2Ptr->variable)), (MultiPow + (lst2Ptr->pow)));
+				}
+			}
+			lst2Ptr = lst2Ptr->next;
+		}
+		lst2Ptr = lst2head;
+		lst1Ptr = lst1Ptr->next;
+	}
+
+	return result;
+}
