@@ -96,64 +96,59 @@ void Insert(PolynomialList *lst, int variable, int pow)
 
 PolynomialList *Sum(PolynomialList *p1, PolynomialList *p2)
 {
-	PolynomialList *lst = InitPolynomialList();
+	PolynomialList *result_lst = InitPolynomialList();
 	Polynomial *iter1 = p1->head;
 	Polynomial *iter2 = p2->head;
 
 	while (iter1)
 	{
-		Insert(lst, iter1->variable, iter1->pow);
+		Insert(result_lst, iter1->variable, iter1->pow);
 		iter1 = iter1->next;
 	}
 
 	while (iter2)
 	{
-		Insert(lst, iter2->variable, iter2->pow);
+		Insert(result_lst, iter2->variable, iter2->pow);
 		iter2 = iter2->next;
 	}
 		
-	return lst;
+	return result_lst;
 }
 
 
 PolynomialList *Diff(PolynomialList *p1, PolynomialList *p2)
 {
-	PolynomialList *lst = InitPolynomialList();
+	PolynomialList *result_lst = InitPolynomialList();
 	Polynomial *iter1 = p1->head;
 	Polynomial *iter2 = p2->head;
 
 	while (iter1)
 	{
-		Insert(lst, iter1->variable, iter1->pow);
+		Insert(result_lst, iter1->variable, iter1->pow);
 		iter1 = iter1->next;
 	}
 
 	while (iter2)
 	{
-		Insert(lst, -(iter2->variable), iter2->pow);
+		Insert(result_lst, -(iter2->variable), iter2->pow);
 		iter2 = iter2->next;
 	}
 
-	return lst;
+	return result_lst;
 }
 
 PolynomialList *Multiple(PolynomialList *lst, int scalar)
 {
-	if (scalar == 0)
-	{
-		lst->head = lst->tail = NULL;
-		return lst;
-	} 
-
+	PolynomialList *result_lst = InitPolynomialList();
 	Polynomial *iter = lst->head;
 
-	while (iter)
+	while (iter && scalar != 0)
 	{
-		iter->variable = (iter->variable)*scalar;
+		Insert(result_lst, (iter->variable)*scalar, iter->pow);
 		iter = iter->next;
 	}
 
-	return lst;
+	return result_lst;
 }
 
 int Order(PolynomialList *lst)

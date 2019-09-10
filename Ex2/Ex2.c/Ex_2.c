@@ -6,6 +6,11 @@ void Ex_2();
 
 void main()
 {
+	Ex_2();
+}
+
+void Ex_2()
+{
 	PolynomialList *lst1 = InitPolynomialList();
 	//Insert(lst1, 4, 2);
 	//Insert(lst1, 6, 4);
@@ -29,8 +34,4 @@ void main()
 	//PrintPolList(lst3);
 	printf("%d\n", Order(lst2));
 	system("PAUSE");
-}
-
-void Ex_2()
-{
 }
