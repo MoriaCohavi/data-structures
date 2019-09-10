@@ -27,6 +27,6 @@ int Order(PolynomialList *lst);
 
 PolynomialList *EmptyPol(PolynomialList *list);
 
-PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2);
-
 void PrintPolList(PolynomialList *lst);
+
+PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2);

@@ -1,2 +1,6 @@
 ﻿  Ex_2.c
+  polinomial_list.c
+c:\users\moria\source\repos\data-structures\ex2\ex2.c\polinomial_list.c(104): warning C4098: 'Insert': 'void' function returning a value
+  Generating Code...
+c:\users\moria\source\repos\data-structures\ex2\ex2.c\polinomial_list.c(178): warning C4715: 'Order': not all control paths return a value
   Ex2.c.vcxproj -> C:\Users\Moria\source\repos\data-structures\Ex2\x64\Debug\Ex2.exe
