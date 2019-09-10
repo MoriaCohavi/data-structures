@@ -116,12 +116,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="doubly_list.c" />
     <ClCompile Include="Ex_2.c" />
     <ClCompile Include="polinomial_list.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="doubly_list.h" />
     <ClInclude Include="polinomial_list.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

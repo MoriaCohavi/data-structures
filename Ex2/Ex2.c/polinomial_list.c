@@ -6,90 +6,102 @@ PolynomialList *InitPolynomialList()
 {
 	PolynomialList *lst = (PolynomialList *)malloc(sizeof(PolynomialList));
 
-	lst->head = lst->tail = NULL;
-	return lst;
+	if (lst)
+	{
+		lst->head = lst->tail = NULL;
+		return lst;
+	}
+
+	return NULL;
 }
 
 void Insert(PolynomialList *lst, int variable, int pow)
 {
-	Polynomial *plm = (Polynomial*)malloc(sizeof(Polynomial));
-	plm->next = plm->prev = NULL;
-	plm->pow = pow;
-	plm->variable = variable;
 	Polynomial *iter = lst->head;
+	Polynomial *plm = (Polynomial*)malloc(sizeof(Polynomial));
 
-	if (!lst->head)
+	if (plm)
 	{
-		lst->head = lst->tail = plm;
-		return;
-	}
+		plm->next = plm->prev = NULL;
+		plm->pow = pow;
+		plm->variable = variable;
 
-	if (plm->pow < iter->pow)//if plm needs to be placed as head
-	{
-		Polynomial *temp = lst->head;
-		lst->head = plm;
-		plm->next = temp;
-		temp->prev = plm;
-		return;
-	}
 
-	while (iter)//if plm needs to be placed at the middle of the list
-	{
-		if (plm->pow == iter->pow)
+		if (!lst->head)
 		{
-			if ((plm->variable + iter->variable) == 0)
+			lst->head = lst->tail = plm;
+			return;
+		}
+
+		if (plm->pow < iter->pow)//if plm needs to be placed as head
+		{
+			Polynomial *temp = lst->head;
+			lst->head = plm;
+			plm->next = temp;
+			temp->prev = plm;
+			return;
+		}
+
+		while (iter)//if plm needs to be placed at the middle of the list
+		{
+			if (plm->pow == iter->pow)
 			{
-				if (!(iter->prev))//head
+				if ((plm->variable + iter->variable) == 0)
 				{
-					Polynomial *temp = lst->head;
-					iter = lst->head = iter->next;
-					iter->prev = NULL;
-					free(temp);
-				}
-				
-				else if (!(iter->next))//tail
-				{
-					Polynomial *temp = lst->tail;
-					iter = lst->tail = iter->prev;
-					iter->next = NULL;
-					free(temp);
+					if (!(iter->prev))//head
+					{
+						Polynomial *temp = lst->head;
+						iter = lst->head = iter->next;
+						iter->prev = NULL;
+						free(temp);
+					}
+
+					else if (!(iter->next))//tail
+					{
+						Polynomial *temp = lst->tail;
+						iter = lst->tail = iter->prev;
+						iter->next = NULL;
+						free(temp);
+						return;
+					}
+
+					else
+					{
+						(iter->prev)->next = iter->next;
+						(iter->next)->prev = iter->prev;
+						free(iter);
+					}
+
 					return;
 				}
 
-				else
-				{
-					(iter->prev)->next = iter->next;
-					(iter->next)->prev = iter->prev;
-					free(iter);
-				}
-
+				iter->variable += plm->variable;
 				return;
 			}
 
-			iter->variable += plm->variable;
-			return;
-		}
+			if ((plm->pow < iter->pow))
+			{
+				Polynomial *temp = iter->prev;
+				(iter->prev) = plm;
+				temp->next = plm;
+				plm->prev = temp;
+				plm->next = iter;
+				return;
+			}
 
-		if ((plm->pow < iter->pow))
-		{
-			Polynomial *temp = iter->prev;
-			(iter->prev) = plm;
-			temp->next = plm;
-			plm->prev = temp;
-			plm->next = iter;
-			return;	
-		}
+			if (!iter->next)//if plm needs to be placed as tail
+			{
+				plm->prev = iter;
+				iter->next = plm;
+				lst->tail = plm;
+				return;
+			}
 
-		if (!iter->next)//if plm needs to be placed as tail
-		{
-			plm->prev = iter;
-			iter->next = plm;
-			lst->tail = plm;
-			return;
+			iter = iter->next;
 		}
-
-		iter = iter->next;
 	}
+
+	return NULL;
 }
 
 
@@ -191,7 +203,7 @@ void PrintPolList(PolynomialList *lst)
 {
 	if (!lst->head)
 	{
-		printf("0\n");
+		printf("Zero (Empty Polynomial)\n");
 	}
 
 	else
@@ -337,7 +349,7 @@ void PrintPolList(PolynomialList *lst)
 
 PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2)//Bonus
 {
-	PolynomialList *result = InitPolynomialList();
+	PolynomialList *result_list = InitPolynomialList();
 	Polynomial *lst1Ptr = list1->head;
 	Polynomial *lst2Ptr = list2->head;
 	Polynomial *lst2head = list2->head;
@@ -359,17 +371,18 @@ PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2)//Bonus
 			if (MultiBase != 0 && lst2Ptr->variable != 0)
 			{
 				if (MultiPow == lst2Ptr->pow)
-					Insert(result, (MultiBase*(lst2Ptr->variable)), MultiPow);
+					Insert(result_list, (MultiBase*(lst2Ptr->variable)), MultiPow);
 				else
 				{
-					Insert(result, (MultiBase*(lst2Ptr->variable)), (MultiPow + (lst2Ptr->pow)));
+					Insert(result_list, (MultiBase*(lst2Ptr->variable)), (MultiPow + (lst2Ptr->pow)));
 				}
 			}
 			lst2Ptr = lst2Ptr->next;
 		}
+
 		lst2Ptr = lst2head;
 		lst1Ptr = lst1Ptr->next;
 	}
 
-	return result;
+	return result_list;
 }

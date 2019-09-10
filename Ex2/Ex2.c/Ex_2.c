@@ -1,7 +1,8 @@
 #include <stdlib.h>
-#include "doubly_list.h"
+#include <stdio.h>
 #include "polinomial_list.h"
 
+void Ex_1();
 void Ex_2();
 
 void main()
@@ -9,37 +10,53 @@ void main()
 	Ex_2();
 }
 
+void Ex_1()
+{
+}
+
 void Ex_2()
 {
 	PolynomialList *lst1 = InitPolynomialList();
-	Insert(lst1, 4, 0);
-	Insert(lst1, -2, 4);
-	Insert(lst1, 1, 0);
-	Insert(lst1, 0, 1);
-	Insert(lst1, 5, 1);
-	Insert(lst1, -5, 1);
-	Insert(lst1, 0, 0);
-	Insert(lst1, 1, 1);
-	Insert(lst1, 1, 9);
-	Insert(lst1, 0, 9);
-	Insert(lst1, 7, 0);
-	PrintPolList(lst1);
-
 	PolynomialList *lst2 = InitPolynomialList();
-	Insert(lst2, 0, 2);
-	Insert(lst2, 6, 8);
-	Insert(lst2, 4, 3);
-	Insert(lst2, -4, 3);
-	Insert(lst2, 1, 1);
-	PrintPolList(lst2);
+	int variable;
+	int pow;
+	int p1_size = 0;
+	int p2_size = 0;
+	int i;
 
-	//PolynomialList *lst3 = InitPolynomialList();
-	//lst3 = Sum(lst1, lst2);
-	//lst3 = Diff(lst1, lst2);
-	//lst3 = Multiple(lst2, 2);
-	//PrintPolList(lst3);
-	//lst1 = EmptyPol(lst2);
-	//PrintPolList(lst1);
-	//printf("%d\n", lst1);
+	printf("Lets create the first Polinomial. How many organs would it be?\n");
+	scanf_s("%d", &p1_size);
+
+	if (p1_size > 0)
+	{
+		printf("Please insert [variable, power] for all organs, seperated by enters.\n");
+
+		for (i = 0; i < p1_size; i++)
+		{
+			scanf_s("%d%d", &variable, &pow);
+			Insert(lst1, variable, pow);
+		}
+	}
+
+	if (p2_size > 0)
+	{
+		printf("Lets create the second Polinomial. How many organs would it be?\n");
+		scanf_s("%d", &p2_size);
+		printf("Please insert [variable, power] for all organs, seperated by enters.\n");
+
+		for (i = 0; i < p2_size; i++)
+		{
+			scanf_s("%d%d", &variable, &pow);
+			Insert(lst2, variable, pow);
+		}
+	}
+
+	if (p1_size > 0 && p2_size > 0)//menu
+	{
+		printf("What would you like to do with the Polynomials?");
+	}
+
+	PrintPolList(lst1);
+	PrintPolList(lst2);
 	system("PAUSE");
 }

@@ -18,17 +18,11 @@
     <ClCompile Include="Ex_2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="doubly_list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="polinomial_list.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="doubly_list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="polinomial_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
