@@ -28,15 +28,10 @@ typedef struct
 }	stack;
 
 void create_stack(stack *);
-
 int push(stack_type, stack *);
-
 int pop(stack *, stack_type *);
-
 int stack_top(stack *, stack_type *);
-
 int stack_is_empty(stack *);
-
 int stack_is_full(stack *);
 
 int getInput(char *expression);// func that gets the user's input into a string and return the strings' size

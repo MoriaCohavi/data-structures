@@ -59,8 +59,9 @@ void Ex1()
 void Ex2()
 {
 	int exSelect = 0, ii, menuSelect = 0, variable, pow, p1_size = 0, p2_size = 0, chooseList = 0, multi;
-
 	PolynomialList *lst1 = InitPolynomialList();
+	PolynomialList *lst2 = InitPolynomialList();
+	
 	printf("Lets create the first Polinomial. How many organs would it be?\n");
 	scanf_s("%d", &p1_size);
 
@@ -75,7 +76,6 @@ void Ex2()
 		}
 	}
 
-	PolynomialList *lst2 = InitPolynomialList();
 	printf("Lets create the second Polinomial. How many organs would it be?\n");
 	scanf_s("%d", &p2_size);
 
