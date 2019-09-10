@@ -22,10 +22,12 @@ void main()
 	Insert(lst2, 1, 1);
 	PrintPolList(lst2);
 
-	//PolynomialList *lst3 = Sum(lst1, lst2);
-	PolynomialList *lst3 = Diff(lst1, lst2);
-	//PolynomialList *lst3 = Multiple(lst3, 3);
-	PrintPolList(lst3);
+	//PolynomialList *lst3 = InitPolynomialList();
+	//lst3 = Sum(lst1, lst2);
+	//lst3 = Diff(lst1, lst2);
+	//lst3 = Multiple(lst2, 2);
+	//PrintPolList(lst3);
+	printf("%d\n", Order(lst2));
 	system("PAUSE");
 }
 

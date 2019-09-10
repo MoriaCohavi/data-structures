@@ -140,16 +140,35 @@ PolynomialList *Diff(PolynomialList *p1, PolynomialList *p2)
 PolynomialList *Multiple(PolynomialList *lst, int scalar)
 {
 	if (scalar == 0)
-		return lst = NULL;
+	{
+		lst->head = lst->tail = NULL;
+		return lst;
+	} 
 
 	Polynomial *iter = lst->head;
 
 	while (iter)
 	{
 		iter->variable = (iter->variable)*scalar;
+		iter = iter->next;
 	}
 
 	return lst;
+}
+
+int Order(PolynomialList *lst)
+{
+	if (!lst->head)
+		return -1;
+
+	Polynomial *iter = lst->head;
+
+	while (iter)
+	{
+		if (!iter->next)
+			return iter->pow;
+		iter = iter->next;
+	}
 }
 
 void PrintPolList(PolynomialList *lst)
