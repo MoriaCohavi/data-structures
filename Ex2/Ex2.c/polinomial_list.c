@@ -5,7 +5,6 @@
 PolynomialList *InitPolynomialList()
 {
 	PolynomialList *lst = (PolynomialList *)malloc(sizeof(PolynomialList));
-	Polynomial *plm = (Polynomial *)malloc(sizeof(Polynomial));
 
 	lst->head = lst->tail = NULL;
 	return lst;
@@ -166,23 +165,167 @@ int Order(PolynomialList *lst)
 	}
 }
 
+PolynomialList *EmptyPol(PolynomialList *lst)
+{
+	Polynomial *head = lst->head;
+
+	if (!head)
+	{
+		return lst;
+	}
+
+	Polynomial *ptr = lst->head;
+	 
+	while (ptr)
+	{
+		Polynomial *temp = ptr;
+		ptr = ptr->next;
+		free(temp);
+	}
+
+	lst->head = lst->tail = NULL;
+	return lst;
+}
+
 void PrintPolList(PolynomialList *lst)
 {
 	if (!lst->head)
 	{
-		printf("0");
+		printf("0\n");
 	}
 
 	else
 	{
 		Polynomial *iter = lst->head;
 
+		if (iter->variable > 0)//head
+		{
+			if (iter->pow == 0)
+			{
+				if (iter->variable == 1)
+				{
+					printf("1 ");
+				}
+
+				else
+				{
+					printf("%d ", iter->variable);
+				}
+			}
+
+			else if (iter->pow == 1)
+			{
+				if (iter->variable == 1)
+				{
+					printf("x ");
+				}
+
+				else
+				{
+					printf("%d ", iter->variable);
+				}
+			}
+
+			else
+			{
+				if (iter->variable == 1)
+				{
+					printf("x^%d ", iter->pow);
+				}
+
+				else
+				{
+					printf("%dx^%d ", iter->variable,iter->pow);
+				}
+			}
+
+			iter = iter->next;
+		}
+
 		while (iter)
 		{
-			printf("%dx^%d", iter->variable, iter->pow);
-			if (iter->next)
+			if (iter->variable > 0)
 			{
-				printf("+");
+				if (iter->pow == 0)
+				{
+					if (iter->variable == 1)
+					{
+						printf("+ 1 ");
+					}
+
+					else
+					{
+						printf("+ %d ", iter->variable);
+					}
+				}
+
+				else if (iter->pow == 1)
+				{
+					if (iter->variable == 1)
+					{
+						printf("+ x ");
+					}
+
+					else
+					{
+						printf("+ %d ", iter->variable);
+					}
+				}
+
+				else
+				{
+					if (iter->variable == 1)
+					{
+						printf("+ x^%d ", iter->pow);
+					}
+
+					else
+					{
+						printf("+ %dx^%d ", iter->variable, iter->pow);
+					}
+				}
+			}
+
+			else if (iter->variable < 0)
+			{
+				if (iter->pow == 0)
+				{
+					if (iter->variable == -1)
+					{
+						printf("- 1 ");
+					}
+
+					else
+					{
+						printf("%d ", iter->variable);
+					}
+				}
+
+				else if (iter->pow == 1)
+				{
+					if (iter->variable == -1)
+					{
+						printf("- x ");
+					}
+
+					else
+					{
+						printf("%d ", iter->variable);
+					}
+				}
+
+				else
+				{
+					if (iter->variable == -1)
+					{
+						printf("- x^%d ", iter->pow);
+					}
+
+					else
+					{
+						printf("%dx^%d ", iter->variable, iter->pow);
+					}
+				}
 			}
 
 			iter = iter->next;
@@ -191,35 +334,8 @@ void PrintPolList(PolynomialList *lst)
 		printf("\n");
 	}
 }
-PolynomialList *EmptyPol(PolynomialList *list)
-{
-	Polynomial *head = list->head;
 
-	if (head == NULL)
-	{
-		return list;
-	}
-	Polynomial *ptr = list->head->next;
-	Polynomial *temp = (Polynomial*)malloc(sizeof(Polynomial));
-	if (temp == NULL)
-	{
-		printf("Alloc failed\n");
-		return list;
-	}
-
-	while (ptr)
-	{
-		temp = ptr;
-		ptr = ptr->next;
-		free(temp);
-	}
-
-	head = InitPolynomialList();
-	head->pow = head->variable = 0;
-	return head;
-}
-
-PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2)
+PolynomialList *Multi2Pol(PolynomialList *list1, PolynomialList *list2)//Bonus
 {
 	PolynomialList *result = InitPolynomialList();
 	Polynomial *lst1Ptr = list1->head;

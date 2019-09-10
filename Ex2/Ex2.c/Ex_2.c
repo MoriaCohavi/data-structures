@@ -12,12 +12,18 @@ void main()
 void Ex_2()
 {
 	PolynomialList *lst1 = InitPolynomialList();
-	//Insert(lst1, 4, 2);
-	//Insert(lst1, 6, 4);
-	//Insert(lst1, 4, 3);
-	//Insert(lst1, -4, 3);
-	//Insert(lst1, 1, 1);
-	//PrintPolList(lst1);
+	Insert(lst1, 4, 0);
+	Insert(lst1, -2, 4);
+	Insert(lst1, 1, 0);
+	Insert(lst1, 0, 1);
+	Insert(lst1, 5, 1);
+	Insert(lst1, -5, 1);
+	Insert(lst1, 0, 0);
+	Insert(lst1, 1, 1);
+	Insert(lst1, 1, 9);
+	Insert(lst1, 0, 9);
+	Insert(lst1, 7, 0);
+	PrintPolList(lst1);
 
 	PolynomialList *lst2 = InitPolynomialList();
 	Insert(lst2, 0, 2);
@@ -32,6 +38,8 @@ void Ex_2()
 	//lst3 = Diff(lst1, lst2);
 	//lst3 = Multiple(lst2, 2);
 	//PrintPolList(lst3);
-	printf("%d\n", Order(lst2));
+	//lst1 = EmptyPol(lst2);
+	//PrintPolList(lst1);
+	//printf("%d\n", lst1);
 	system("PAUSE");
 }
