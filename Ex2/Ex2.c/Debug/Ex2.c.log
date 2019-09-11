@@ -1,8 +1,0 @@
-﻿  polinomial_list.c
-c:\users\moria\documents\שנה א\סמסטר קיץ\מבני נתונים\מטלות\ex2\ex2.c\polinomial_list.c(84): warning C4033: 'Sum' must return a value
-c:\users\moria\documents\שנה א\סמסטר קיץ\מבני נתונים\מטלות\ex2\ex2.c\polinomial_list.c(92): warning C4033: 'Sum' must return a value
-c:\users\moria\documents\שנה א\סמסטר קיץ\מבני נתונים\מטלות\ex2\ex2.c\polinomial_list.c(114): warning C4033: 'Diff' must return a value
-c:\users\moria\documents\שנה א\סמסטר קיץ\מבני נתונים\מטלות\ex2\ex2.c\polinomial_list.c(122): warning C4033: 'Diff' must return a value
-c:\users\moria\documents\שנה א\סמסטר קיץ\מבני נתונים\מטלות\ex2\ex2.c\polinomial_list.c(130): warning C4716: 'Diff': must return a value
-c:\users\moria\documents\שנה א\סמסטר קיץ\מבני נתונים\מטלות\ex2\ex2.c\polinomial_list.c(102): warning C4716: 'Sum': must return a value
-  Ex2.c.vcxproj -> C:\Users\Moria\Documents\שנה א\סמסטר קיץ\מבני נתונים\מטלות\Ex2\Debug\Ex2.exe
