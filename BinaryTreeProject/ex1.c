@@ -24,5 +24,6 @@ void Ex1()
 		scanf("%d", &num);
 	}
 
+	deleteTree(Root);
 	system("PAUSE");
 }

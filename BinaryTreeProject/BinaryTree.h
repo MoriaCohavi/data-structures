@@ -16,5 +16,8 @@ Tree *leftSon(Tree *newtree);
 Tree *rightSon(Tree *newtree);
 Tree *parent(Tree *newtree);
 tree_type nodeData(Tree *newtree);
+void freeTree(Tree *deltree);
+
 
 void insertToTree(Tree **Root, Tree *parent, tree_type data);
+

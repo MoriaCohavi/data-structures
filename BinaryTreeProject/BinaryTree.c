@@ -71,18 +71,14 @@ void insertToTree(Tree **Root, Tree *parent, tree_type data)
 	}
 }
 
-void deleteTree(Tree *deltree)
+void freeTree(Tree *deltree)
 {
 	if (deltree)
 	{
-		deleteTree(deltree->RightSon);
-		deleteTree(deltree->LeftSon);
+		freeTree(deltree->RightSon);
+		freeTree(deltree->LeftSon);
 		free(deltree);
 	}
 	
 }
 
-void printInorder(Tree *printTree)
-{
-
-}
