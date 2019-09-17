@@ -3,9 +3,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "BinaryTree.h"
+#include "Queue_point.h"
 
 Tree *Ex1(Tree *Root);
 void Ex2(Tree *Root);
+void Ex3(Tree *tree);
 void Ex4(Tree *tree);
 
 
@@ -22,7 +24,7 @@ int main()
 			printf("EXIT-->0\n");
 			do {
 				exSelect = 0;
-				printf("please select 0-4: ");
+				printf("please select 0-3: ");
 				scanf("%d", &exSelect);
 			} while ((exSelect < 0) || (exSelect > 5));
 			switch (exSelect)
@@ -39,21 +41,15 @@ int main()
 				}break;
 				case 3:
 				{
-
+					Root = Ex1(Root);
+					Ex3(Root);
 				}break;
-
-				case 4:
-				{
-					Ex4(Root);
-				}
 			}
 		} while (menuSelect && exSelect);
 
 		Ex4(Root);
 		return 0;
 }
-
-
 
 Tree *Ex1(Tree *Root)
 {
@@ -116,6 +112,47 @@ void Ex2(Tree *Root)
 			}
 		}
 	}
+}
+
+void Ex3(Tree *tree)
+{
+	queue *pq = (queue*)malloc(sizeof(queue));
+	create_queue(pq);
+	Tree *temp = (Tree*)malloc(sizeof(Tree));
+	int i;
+
+	if (emptyTree(tree))
+	{
+		enqueue(tree, pq);
+
+		while (!queue_is_empty(pq))
+		{
+			int currLen = pq->items_num;
+			for (i = 0; i < currLen; i++)
+			{
+				temp = dequeue(pq);
+				printf("%d ", temp->value);
+
+				if (temp->LeftSon)
+				{
+					enqueue(temp->LeftSon, pq);
+				}
+
+				if (temp->RightSon)
+				{
+					enqueue(temp->RightSon, pq);
+				}
+			}
+		}
+	}
+	
+	else 
+	{
+		printf("The tree is empty");
+	}
+
+	printf("\n");
+	system("PAUSE");
 }
 
 void Ex4(Tree *tree)
