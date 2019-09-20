@@ -1,3 +1,5 @@
+//submitted by Moria Cohavi i.d. 312321698 and Keren Vieytes i.d. 312213176
+
 #pragma once
 
 typedef int tree_type ;
